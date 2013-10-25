@@ -1,0 +1,15 @@
+development: &default
+  adapter: postgresql
+  database: reservationbot_development
+  encoding: utf8
+  min_messages: warning
+  pool: 5
+  timeout: 5000
+  username: atal421
+  password:
+
+test:
+  <<: *default
+  database: reservationbot_test
+
+
