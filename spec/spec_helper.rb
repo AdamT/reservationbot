@@ -8,6 +8,9 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'webmock/rspec'
 
+# https://github.com/jnicklas/capybara#using-capybara-with-rspec
+require 'capybara/rspec'
+
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
 RSpec.configure do |config|
@@ -22,4 +25,5 @@ RSpec.configure do |config|
 end
 
 Capybara.javascript_driver = :webkit
+#Capybara.javascript_driver = :selenium
 WebMock.disable_net_connect!(allow_localhost: true)

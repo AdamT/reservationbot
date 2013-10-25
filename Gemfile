@@ -33,6 +33,7 @@ end
 
 group :test do
   gem 'capybara-webkit', '>= 1.0.0'
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'shoulda-matchers'
