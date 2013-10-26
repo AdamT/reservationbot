@@ -19,11 +19,13 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'unicorn'
+gem 'jquery-ui-rails'
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'foreman'
+  gem 'pry'
 end
 
 group :development, :test do

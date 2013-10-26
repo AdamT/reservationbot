@@ -90,6 +90,8 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.1.0)
+      railties (>= 3.1.0)
     json (1.8.1)
     kgio (2.8.1)
     launchy (2.3.0)
@@ -97,6 +99,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.25)
     mini_portile (0.5.2)
     minitest (4.7.5)
@@ -109,6 +112,11 @@ GEM
       mini_portile (~> 0.5.0)
     pg (0.17.0)
     polyglot (0.3.3)
+    pry (0.9.6)
+      coderay (>= 0.9.8)
+      method_source (>= 0.6.5)
+      ruby_parser (>= 2.0.5)
+      slop (~> 2.1.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -146,6 +154,8 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    ruby_parser (3.2.2)
+      sexp_processor (~> 4.1)
     rubyzip (1.0.0)
     safe_yaml (0.9.7)
     sass (3.2.12)
@@ -158,6 +168,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0.0)
       websocket (~> 1.0.4)
+    sexp_processor (4.4.0)
     shoulda-matchers (2.4.0)
       activesupport (>= 3.0.0)
     simple_form (3.0.0)
@@ -167,6 +178,7 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
+    slop (2.1.0)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -217,10 +229,12 @@ DEPENDENCIES
   foreman
   high_voltage
   jquery-rails
+  jquery-ui-rails
   launchy
   neat
   newrelic_rpm (>= 3.6.7)
   pg
+  pry
   rack-timeout
   rails (>= 4.0.0)
   rails_12factor
