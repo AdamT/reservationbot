@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+[2,4].each do |table_size|
+  Table.create(seats: table_size)
+end
+
+puts 'Tables created'
+Table.all.each {|t| puts t.inspect }
