@@ -1,5 +1,5 @@
 $(function (){
-  $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' });
+  $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd', beforeShowDay: $.datepicker.noWeekends });
 
   $hours = $( "#hours" );
   $minutes = $( "#minutes" );
