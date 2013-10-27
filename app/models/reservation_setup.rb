@@ -9,12 +9,11 @@ class ReservationSetup
   def setup
     if reservation_requirements_met?
       @reservation = target_table.reservations.create(
-        time: reservation_data.time,
+        time:       reservation_data.time,
         group_size: reservation_data.group_size
       )
     else
       @reservation = Reservation.new
-      @reservation.errors[:base] << 'Group too large'
       @reservation.errors[:base] << 'No tables available'
     end
 
