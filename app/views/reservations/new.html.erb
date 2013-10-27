@@ -1,4 +1,4 @@
-<%= render 'layouts/top', object: @header = 'Reservationbot#new'  %>
+<%= render 'layouts/top', locals: {header: 'Reservationbot: Book'}%>
 
 <div class='form-container'>
   <%= form_for @reservation do |f| %>
@@ -12,7 +12,7 @@
     <% @options = (5..8).map {|t| [t.to_s + 'PM', t]} %>
     <%= select_tag :hours, options_for_select(@options) %>
     <span class='colon'>:</span>
-    <%= select_tag :minutes, options_for_select([0, 15, 30, 45]) %>
+    <%= select_tag :minutes, options_for_select(ReservationsHelper::MINUTES_INTERVAL) %>
     <br>
 
     <span id="submit-reservation-container">
