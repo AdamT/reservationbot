@@ -1,0 +1,27 @@
+<div class='top'>
+  <h1><%= @header %></h1>
+
+  <p>Using
+    <%= link_to 'Suspenders @ https://github.com/thoughtbot/suspenders', 'https://github.com/thoughtbot/suspenders', target: "_blank" %>
+  </p>
+
+  <p>
+    Specifically: factory_girl, bourbon, neat, shoulda, capybara-webkit
+  </p>
+
+  <p>
+  <%= link_to '-- Requirements --',
+    page_path('requirements') \
+    unless params[:id] == 'requirements' %>
+  </p>
+
+  <p>
+  <%= link_to 'Book a table',
+    new_reservation_path \
+    unless params[:action] == 'new' && params[:controller] == 'reservations' %>
+  </p>
+
+  <p>
+  <%= link_to 'All reservations', reservations_path unless params[:action] == 'index' %>
+  </p>
+</div>
