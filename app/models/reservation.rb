@@ -14,7 +14,7 @@ class Reservation < ActiveRecord::Base
   end
 
   def is_valid?
-    return false unless self.errors.empty?
+    return false unless errors.empty?
     true
   end
 
