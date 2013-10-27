@@ -5,7 +5,7 @@ ruby '2.0.0'
 gem 'airbrake'
 gem 'bourbon'
 gem 'coffee-rails'
-gem 'delayed_job_active_record', '>= 4.0.0'
+#gem 'delayed_job_active_record', '>= 4.0.0'
 gem 'email_validator'
 gem 'flutie'
 gem 'high_voltage'
@@ -35,6 +35,7 @@ end
 
 group :test do
   gem 'capybara-webkit', '>= 1.0.0'
+  #gem 'poltergeist'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'launchy'
