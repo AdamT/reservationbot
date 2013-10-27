@@ -4,7 +4,5 @@ class Table < ActiveRecord::Base
   has_many :reservations
 
   scope :most_seats,  -> { order('seats desc').first.seats }
-  scope :least_seats, -> { order('seats asc').first.seats }
   scope :can_be_used, ->(size) { where('seats >= ?', size) }
-
 end
