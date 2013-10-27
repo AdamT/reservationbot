@@ -34,14 +34,14 @@ describe ReservationsController do
     end
 
     it 'success, same time, smaller group' do
-      @table_for_2.reservations << reservation_for_2
+      table_for_2_with_reservaton_for_2
 
       post :create, @params
       expect(response).to be_redirect
     end
 
     it 'success, different day, same group' do
-      @table_for_2.reservations << reservation_for_2
+      table_for_2_with_reservaton_for_2
       @params[:reservation][:time] = '2013-11-01'
 
       post :create, @params
@@ -49,7 +49,7 @@ describe ReservationsController do
     end
 
     it 'success, 2 hours later, same group' do
-      @table_for_2.reservations << reservation_for_2
+      table_for_2_with_reservaton_for_2
       @params[:hours] = 7
 
       post :create, @params
@@ -57,8 +57,8 @@ describe ReservationsController do
     end
 
     it 'success, 2 hours later, tables full at 5' do
-      @table_for_2.reservations << reservation_for_2
-      @table_for_4.reservations << reservation_for_4
+      table_for_2_with_reservaton_for_2
+      table_for_4_with_reservaton_for_4
       @params[:hours] = 7
 
       post :create, @params
@@ -66,8 +66,8 @@ describe ReservationsController do
     end
 
     it 'success, 2 hours later, tables full at 5, party of 4' do
-      @table_for_2.reservations << reservation_for_2
-      @table_for_4.reservations << reservation_for_4
+      table_for_2_with_reservaton_for_2
+      table_for_4_with_reservaton_for_4
       @params[:hours] = 7
       @params[:reservation][:group_size] = 4
 
@@ -76,16 +76,16 @@ describe ReservationsController do
     end
 
     it 'fail, same time, tables full' do
-      @table_for_4.reservations << reservation_for_4
-      @table_for_2.reservations << reservation_for_2
+      table_for_2_with_reservaton_for_2
+      table_for_4_with_reservaton_for_4
 
       post :create, @params
       expect(response).to_not be_redirect
     end
 
     it 'fail, within 1 hour, tables full' do
-      @table_for_4.reservations << reservation_for_4
-      @table_for_2.reservations << reservation_for_2
+      table_for_2_with_reservaton_for_2
+      table_for_4_with_reservaton_for_4
 
       post :create, @params
       expect(response).to_not be_redirect
@@ -122,4 +122,12 @@ def reservation_for_4
     time: '2013-10-01 05:00:00',
     group_size: 4
   )
+end
+
+def table_for_2_with_reservaton_for_2
+  @table_for_2.reservations << reservation_for_2
+end
+
+def table_for_4_with_reservaton_for_4
+  @table_for_4.reservations << reservation_for_4
 end
