@@ -1,2 +1,31 @@
 <h1>Reservations#new</h1>
 <p>Find me in app/views/reservations/new.html.erb</p>
+
+<%#= simple_form_for @reservation do |f| %>
+  <%#= f.input :group_size,
+    label: 'How many in your group?',
+    collection: 1..10,
+    selected: lambda {|s| s == 1} %>
+
+  <%#= f.input :time, label: 'Reservation time:' %>
+  <%#= f.input :time, label: 'Reservation time:' %>
+  <%#= f.button :submit %>
+
+<%# end %>
+
+<%= form_for @reservation do |f| %>
+  <%= f.label :group_size, "Group size:" %>
+  <%= f.select :group_size, options_for_select(1..10) %>
+  <br>
+  <%= f.label :time, "Reservation date:" %>
+  <%= f.text_field :time, class: "datepicker" %>
+  <br>
+  <%= label_tag :hour, "Time:" %>
+  <% @options = (5..8).map {|t| [t.to_s + 'PM', t]} %>
+  <%= select_tag :hours, options_for_select(@options) %>
+  :
+  <%= select_tag :minutes, options_for_select([0, 15, 30, 45]) %>
+  <br>
+
+  <%= f.submit 'Book reservation' %>
+<% end %>
