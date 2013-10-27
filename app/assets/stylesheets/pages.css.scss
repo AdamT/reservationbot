@@ -1,0 +1,7 @@
+#outer-container {
+  @include outer-container;
+  margin-top: 40px;
+  text-align: center;
+  background-color: #CA87FF;
+  font-family: $helvetica;
+}
