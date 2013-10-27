@@ -10,7 +10,7 @@ class Reservation < ActiveRecord::Base
 
     def setup(params)
       @reservation_obj = build_reservation_object(params)
-      if reservation_obj.group_size <= Table.most_seats && is_available?(reservation_obj)
+      if reservation_obj.group_size <= Table.most_seats && is_not_weekend?(reservation_obj.time) && is_available?(reservation_obj)
         tables = Table.can_be_used(reservation_obj.group_size) & open_tables.sort! {|open_table| open_table.seats }
 
         @reservation = tables.first.reservations.create(
@@ -33,8 +33,13 @@ class Reservation < ActiveRecord::Base
     true
   end
 
+  def self.is_not_weekend?(time)
+    wday = time.strftime('%A')
+    return false if wday == 'Saturday' || wday == 'Sunday'
+    true
+  end
+
   def self.is_available?(reservation_obj)
-    #if open_tables.count == Table.all.count
     if open_tables.count == Table.order('created_at desc').count
       can_add =  true
     elsif open_tables.count == 1 && reservation_obj.group_size <= open_tables.first.seats
