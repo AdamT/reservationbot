@@ -4,10 +4,9 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new
-    setup_response = Reservation.setup(params)
+    @reservation = Reservation.setup(params)
 
-    if setup_response.is_valid?
+    if @reservation.is_valid?
       redirect_to reservations_path, notice: "Reservation booked!"
     else
       render :new

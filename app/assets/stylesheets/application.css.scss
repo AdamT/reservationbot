@@ -8,3 +8,19 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 @import "reservations";
+
+#flash {
+  height: 40px;
+  margin: 10px 0px 20px 0px;
+}
+
+#flash_notice {
+  background-color: #61B329;
+  height: 40px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+#errorExplanation {
+  background-color: #FF6670;
+}

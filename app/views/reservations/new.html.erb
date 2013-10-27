@@ -2,11 +2,26 @@
 
 <div class='form-container'>
   <%= form_for @reservation do |f| %>
+
+    <% if @reservation.errors.any? %>
+      <div id="errorExplanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited
+        this post from being saved:
+      </h2>
+      <ul>
+      <% @reservation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+      </div>
+    <% end %>
+
+
     <%= f.label :group_size, "Group size:" %>
     <%= f.select :group_size, options_for_select(1..4) %>
     <br>
     <%= f.label :time, "Reservation date:" %>
-    <%= f.text_field :time, class: "datepicker" %>
+    <%= f.text_field :time, class: "datepicker", required: 'required' %>
     <br>
     <%= label_tag :hour, "Time:" %>
     <% @options = (5..8).map {|t| [t.to_s + 'PM', t]} %>
