@@ -17,7 +17,8 @@
         <%= reservation.time.day %>,
         at
         <%= reservation.time.hour %>
-        <%= ": " + reservation.time.min.to_s if reservation.time.min > 0 %> PM
+        <%= ":" + reservation.time.min.to_s if reservation.time.min > 0 %> PM
+        (<%= reservation.time.year %>)
         </li>
       <% end %>
     </ul>
@@ -38,7 +39,8 @@
         <%= reservation.time.day %>,
         at
         <%= reservation.time.hour %>
-        <%= ": " + reservation.time.min.to_s if reservation.time.min > 0 %> PM
+        <%= ":" + reservation.time.min.to_s if reservation.time.min > 0 %> PM
+        (<%= reservation.time.year %>)
         </li>
       <% end %>
     </ul>
