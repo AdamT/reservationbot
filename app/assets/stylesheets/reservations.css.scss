@@ -1,3 +1,74 @@
 /*
  *= require jquery.ui.datepicker
  */
+
+.top {
+  @include box-shadow(0 0 20px 3px hsla(0, 0%, 0%, 0.65));
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  background-color: #d5eefb;
+}
+
+.reservations, .pages {
+  @include outer-container;
+  font-family: $helvetica;
+}
+
+.form-container {
+  margin-top: 40px;
+}
+
+.new_reservation {
+  @include span-columns(6);
+  @include shift(3);
+
+  label {
+    font-size: 40px;
+  }
+  select {
+    height: 40px;
+    vertical-align: super;
+    font-size: 20px;
+    padding-top: 5px;
+  }
+
+  #reservation_group_size {
+    width: 323px;;
+  }
+  #reservation_time {
+    vertical-align: super;
+    height: 40px;
+    width: 213px;
+    font-size: 17px;
+  }
+  #hours {
+    width: 204px;
+  }
+
+  #minutes {
+    width: 204px;
+  }
+
+  #submit-reservation-container input {
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #submit-reservation {
+    line-height: 30px;
+    margin-top: 20px;
+    height: 40px;
+    font-size: 25px;
+  }
+}
+
+.colon {
+  font-size: 40px;
+}
+
+$red-link-color: #FF6359;
+a:link, a:visited, a:hover, a:active {
+  color: $red-link-color;
+  text-decoration: none;
+}
