@@ -2,7 +2,7 @@ Reservationbot::Application.routes.draw do
   get "reservations/new"
   get "reservations/index"
 
-  resources :reservations
+  resources :reservations, only: [:new, :create, :index]
 
-  root "reservations#new"
+  root "reservations#index"
 end
