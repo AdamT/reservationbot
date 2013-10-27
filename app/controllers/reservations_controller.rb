@@ -14,5 +14,7 @@ class ReservationsController < ApplicationController
   end
 
   def index
+    @two_person_table = Table.where(seats: 2).first
+    @four_person_table = Table.where(seats: 4).first
   end
 end

@@ -1,1 +1,46 @@
 <%= render 'layouts/top', locals: {header: 'Reservationbot: Listings'} %>
+
+<div class='spacer'></div>
+<div class='outer-container'>
+  <div class='left-column'>
+    <div class='table-header'>
+      <label>
+        <%= @two_person_table.seats %> Seater
+      </label>
+    </div>
+    <ul>
+      <% @two_person_table.reservations.each do |reservation| %>
+        <li>
+        <span>For</span>
+        <%= reservation.group_size %> on
+        <%= Date::MONTHNAMES[reservation.time.month] %>
+        <%= reservation.time.day %>,
+        at
+        <%= reservation.time.hour %>
+        <%= ": " + reservation.time.min.to_s if reservation.time.min > 0 %> PM
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class='right-column'>
+    <div class='table-header'>
+      <label>
+        <%= @four_person_table.seats %> Seater
+      </label>
+    </div>
+    <ul>
+      <% @four_person_table.reservations.each do |reservation| %>
+        <li>
+        <span>For</span>
+        <%= reservation.group_size %> on
+        <%= Date::MONTHNAMES[reservation.time.month] %>
+        <%= reservation.time.day %>,
+        at
+        <%= reservation.time.hour %>
+        <%= ": " + reservation.time.min.to_s if reservation.time.min > 0 %> PM
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

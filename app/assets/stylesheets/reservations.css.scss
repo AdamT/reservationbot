@@ -72,3 +72,27 @@ a:link, a:visited, a:hover, a:active {
   color: $red-link-color;
   text-decoration: none;
 }
+
+.outer-container {
+  @include outer-container;
+  text-align: center;
+
+  li {
+    text-align: left;
+  }
+}
+
+.left-column {
+  @include span-columns(6);
+  background-color:#aadbf5;
+}
+
+.right-column {
+  @include span-columns(6);
+  @include omega();
+  background-color:#aadbf5;
+}
+
+.table-header {
+  margin-top: 10px;
+}

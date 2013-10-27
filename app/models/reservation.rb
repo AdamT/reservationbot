@@ -1,6 +1,7 @@
 class Reservation < ActiveRecord::Base
   belongs_to :table
 
+  default_scope order('time ASC')
   scope :within_this_time, ->(new_time) {
     where(
       'time between ? and ?',
