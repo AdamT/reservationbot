@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe 'add reservation', type: :feature do
+  before(:each) do
+    table1 = FactoryGirl.create(:table, seats: 2)
+    table2 = FactoryGirl.create(:table, seats: 4)
+  end
 
   it 'for 0', js: true do
     pending ''
@@ -10,7 +14,14 @@ describe 'add reservation', type: :feature do
     go_to_reservations
     book_for 5
     on_day(3)
+    select_hour(6)
+    select_minute(45)
+    page.click_on("Book reservation")
+    #page.click_button('Book reservation')
+
+    sleep 5
     save_and_open_page
+    #expect(page).to have_content 'Success'
   end
 
   it 'for 3', js: true do
@@ -28,8 +39,8 @@ describe 'add reservation', type: :feature do
 end
 
 def go_to_reservations
-  visit root_path
-  click_link 'Book a table'
+  page.visit root_path
+  page.click_link 'Book a table'
 end
 
 def book_for(group_size)
@@ -46,6 +57,13 @@ def on_day(day)
   #page.execute_script %Q{ $('#reservation_time').trigger("focus") } # activate datetime picker
   #page.execute_script %Q{ $('a.ui-datepicker-next').trigger("click") } # move one month forward
   #page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") } # click on day 15
-  sleep 5
 end
 
+def select_hour(hour)
+  puts hour.inspect
+  page.select(hour.to_s + "PM", from: 'hours')
+end
+
+def select_minute(min)
+  page.select(min, from: 'minutes')
+end

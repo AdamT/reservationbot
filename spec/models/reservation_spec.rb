@@ -1,5 +1,19 @@
 require 'spec_helper'
 
 describe Reservation do
-  #pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+    @table_for_2 = FactoryGirl.create(:table, seats: 2)
+    @table_for_4 = FactoryGirl.create(:table, seats: 4)
+    @params = {
+      reservation: {group_size: 2, time: '2013-10-01'},
+      hours: 5,
+      minutes: 0
+    }
+  end
+
+  it { should belong_to(:table) }
+
+  it 'is successful' do
+    expect(Reservation.setup(@params).id).to_not be_nil
+  end
 end

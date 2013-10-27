@@ -23,7 +23,6 @@ RSpec.configure do |config|
   config.order = 'random'
   config.use_transactional_fixtures = false
 end
-
 #Capybara.javascript_driver = :webkit
 Capybara.javascript_driver = :selenium
 WebMock.disable_net_connect!(allow_localhost: true)
