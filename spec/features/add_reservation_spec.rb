@@ -8,7 +8,8 @@ describe 'add reservation', type: :feature do
 
   it 'for 2', js: true do
     go_to_reservations
-    book_for 2
+    book_for 5
+    on_day(3)
     save_and_open_page
   end
 
@@ -32,5 +33,19 @@ def go_to_reservations
 end
 
 def book_for(group_size)
-  select group_size, from: 'group size'
+  page.select(group_size, from: 'reservation_group_size')
 end
+
+def on_day(day)
+  #page.find('#reservation_time').trigger(:click)
+  #page.find('#reservation_time').trigger(:mouseover)
+  find('#reservation_time').click
+  within('.ui-datepicker-calendar') do
+    click_on 10
+  end
+  #page.execute_script %Q{ $('#reservation_time').trigger("focus") } # activate datetime picker
+  #page.execute_script %Q{ $('a.ui-datepicker-next').trigger("click") } # move one month forward
+  #page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") } # click on day 15
+  sleep 5
+end
+
