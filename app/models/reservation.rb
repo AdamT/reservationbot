@@ -13,7 +13,6 @@ class Reservation < ActiveRecord::Base
       if reservation_obj.group_size <= Table.most_seats && is_available?(reservation_obj)
         tables = Table.can_be_used(reservation_obj.group_size) & open_tables.sort! {|open_table| open_table.seats }
 
-        binding.pry
         @reservation = tables.first.reservations.create(
           time: reservation_obj.time,
           group_size: reservation_obj.group_size
@@ -35,7 +34,8 @@ class Reservation < ActiveRecord::Base
   end
 
   def self.is_available?(reservation_obj)
-    if open_tables.count == Table.all.count
+    #if open_tables.count == Table.all.count
+    if open_tables.count == Table.order('created_at desc').count
       can_add =  true
     elsif open_tables.count == 1 && reservation_obj.group_size <= open_tables.first.seats
       can_add = true
@@ -48,7 +48,8 @@ class Reservation < ActiveRecord::Base
   private_class_method :is_available?
 
   def self.open_tables
-    current_reservations = within_this_time(reservation_obj.time).all
+    #current_reservations = within_this_time(reservation_obj.time).all
+    current_reservations = within_this_time(reservation_obj.time).to_a
     current_reservations.empty? ? Table.all : Table.all - current_reservations.collect {|reservation| reservation.table }
   end
 
