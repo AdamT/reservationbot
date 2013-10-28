@@ -1,7 +1,8 @@
 # Reservationbot
+=====
 
-----
 ## So, what's this?
+-----
 
 It's an exercise. Here are the requirements:
 
@@ -15,13 +16,13 @@ It's an exercise. Here are the requirements:
 
 Thanks [@rbeene](https://github.com/rbeene) for the exercise
 
-----
 ## What's it build with?
+-----
 
 Love of course. (And [Suspenders](https://github.com/thoughtbot/suspenders))
 
-----
 ## Any TODOs?
+----
 
 Always!
 
