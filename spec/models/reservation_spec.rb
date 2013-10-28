@@ -13,7 +13,13 @@ describe Reservation do
 
   it { should belong_to(:table) }
 
-  it 'is successful' do
+  it 'reservation is not nil' do
     expect(Reservation.setup(@params).id).to_not be_nil
+  end
+
+  it 'is valid' do
+    reservation = Reservation.setup(@params)
+
+    expect(reservation.is_valid?).to be true
   end
 end
