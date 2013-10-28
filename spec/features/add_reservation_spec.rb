@@ -48,15 +48,10 @@ def book_for(group_size)
 end
 
 def on_day(day)
-  #page.find('#reservation_time').trigger(:click)
-  #page.find('#reservation_time').trigger(:mouseover)
   find('#reservation_time').click
   within('.ui-datepicker-calendar') do
     click_on 10
   end
-  #page.execute_script %Q{ $('#reservation_time').trigger("focus") } # activate datetime picker
-  #page.execute_script %Q{ $('a.ui-datepicker-next').trigger("click") } # move one month forward
-  #page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") } # click on day 15
 end
 
 def select_hour(hour)
