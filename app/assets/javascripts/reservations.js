@@ -1,8 +1,8 @@
 $(function (){
   $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd', beforeShowDay: $.datepicker.noWeekends });
 
-  $hours = $( "#hours" );
-  $minutes = $( "#minutes" );
+  var $hours = $( "#hours" );
+  var $minutes = $( "#minutes" );
 
   $( "#hours" ).change(function() {
     var hour = $hours.val();
