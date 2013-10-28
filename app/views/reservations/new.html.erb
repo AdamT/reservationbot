@@ -6,7 +6,7 @@
     <% if @reservation.errors.any? %>
       <div id="errorExplanation">
       <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited
-        this post from being saved:
+        this reservation from being saved:
       </h2>
       <ul>
       <% @reservation.errors.full_messages.each do |msg| %>
