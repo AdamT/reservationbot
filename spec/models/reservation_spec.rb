@@ -22,4 +22,17 @@ describe Reservation do
 
     expect(reservation.is_valid?).to be true
   end
+
+  describe '.setup' do
+    it 'returns a reservation' do
+      expect(Reservation.setup(@params)).to be_a(Reservation)
+    end
+  end
+
+  describe '#is_valid?' do
+    it 'returns true' do
+      reservation = Reservation.setup(@params)
+      expect(reservation.is_valid?).to be true
+    end
+  end
 end
