@@ -31,7 +31,8 @@ class ReservationService
 
   def not_on_weekend?
     wday = data.time.strftime('%A')
-    return false if wday == 'Saturday' || wday == 'Sunday'
+
+    return false if %w(Saturday Sunday).include?(wday)
     true
   end
 
@@ -46,10 +47,12 @@ class ReservationService
   end
 
   def open_tables
+    all_tables = Table.all
+
     if current_reservations.empty?
-      Table.all
+      all_tables
     else
-      Table.all - current_reservations.collect {|reservation| reservation.table }
+      all_tables - current_reservations.collect {|rsv| rsv.table }
     end
   end
 
