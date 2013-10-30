@@ -13,26 +13,16 @@ describe Reservation do
 
   it { should belong_to(:table) }
 
-  it 'reservation is not nil' do
-    expect(Reservation.setup(@params).id).to_not be_nil
-  end
-
-  it 'is valid' do
-    reservation = Reservation.setup(@params)
-
-    expect(reservation.is_valid?).to be true
-  end
-
-  describe '.setup' do
-    it 'returns a reservation' do
-      expect(Reservation.setup(@params)).to be_a(Reservation)
-    end
-  end
-
   describe '#is_valid?' do
     it 'returns true' do
-      reservation = Reservation.setup(@params)
+      reservation = Reservation.new
       expect(reservation.is_valid?).to be true
+    end
+
+    it 'returns false' do
+      reservation = Reservation.new
+      reservation.errors[:base] << 'No tables available'
+      expect(reservation.is_valid?).to be false
     end
   end
 end

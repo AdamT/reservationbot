@@ -8,11 +8,6 @@ class Reservation < ActiveRecord::Base
     where('time between ? and ?', time - time_range, time + time_range)
   }
 
-  def self.setup(params)
-    @reservation_obj = ReservationData.new(params)
-    ReservationSetup.new(@reservation_obj).setup
-  end
-
   def is_valid?
     return false unless errors.empty?
     true
